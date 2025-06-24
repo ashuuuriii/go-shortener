@@ -1,0 +1,6 @@
+run:
+	go run cmd/server/main.go
+
+format:
+	go vet ./...
+	go fmt ./...

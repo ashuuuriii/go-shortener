@@ -19,6 +19,7 @@ func main() {
 	r := chi.NewRouter()
 
 	r.Post("/shorten", handlers.Shorten)
+	r.Get("/redirect/{short_url}", handlers.RedirectURL)
 
 	server := &http.Server{
 		Addr:    ":8080",

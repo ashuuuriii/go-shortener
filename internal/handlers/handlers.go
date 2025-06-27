@@ -2,11 +2,13 @@ package handlers
 
 import (
 	"encoding/json"
+	"fmt"
 	"log/slog"
 	"net/http"
 
 	"local/go-shortener/internal/models"
 
+	"github.com/go-chi/chi/v5"
 	"github.com/go-playground/validator/v10"
 )
 
@@ -39,4 +41,10 @@ func Shorten(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusCreated)
 
 	json.NewEncoder(w).Encode(response)
+}
+
+func RedirectURL(w http.ResponseWriter, r *http.Request) {
+	shortURL := chi.URLParam(r, "short_url")
+
+	fmt.Fprint(w, shortURL)
 }

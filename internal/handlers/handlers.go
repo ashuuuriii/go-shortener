@@ -7,6 +7,7 @@ import (
 	"net/http"
 
 	"local/go-shortener/internal/models"
+	"local/go-shortener/internal/shortener"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-playground/validator/v10"
@@ -34,7 +35,7 @@ func Shorten(w http.ResponseWriter, r *http.Request) {
 	}
 
 	response := models.ShortenResponse{
-		ShortenedUrl: "abc",
+		ShortenedUrl: shortener.ShortenURL(req.LongURL),
 	}
 
 	w.Header().Set("Content-Type", "application/json")

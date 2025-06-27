@@ -1,0 +1,1 @@
+drop role "shortener-user";
